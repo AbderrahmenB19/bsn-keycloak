@@ -1,0 +1,77 @@
+<div class="p-2">
+    <h2>Manage my book</h2>
+    <hr>
+    @if (
+    ErrorMsg.length
+    ) {
+    <div class="alert alert-danger mt-2" role="alert">
+        @for (item of ErrorMsg; track $index) {
+        <p class="p-0 m-0">{{item}}</p>
+        }
+    </div>
+    }
+    <div class="d-flex gap-2">
+        <div class="col-3">
+            <img [src]="selectedPicture|| '#'" alt="..." class="rounded-1" width="100%" height="100%">
+            <div class="mt-2">
+                <input accept="image/*" type="file" name="" id="form-file" class="form-control" (change)="OnFileSelected($event)">
+            </div>
+        </div>
+        <div class="col-9">
+            <form class="row g-3">
+                <div class="col-6">
+                    <label for="title" class="form-label"> Title
+                        
+                    </label>
+                    <input class="form-control" type="text" name="title" id="title" [(ngModel)]="bookRequest.title" placeholder="Book title">
+
+                </div>
+                <div class="col-6">
+                    <label for="authorName" class="form-label"> Author Name
+                        
+                    </label>
+                    <input class="form-control" type="text" name="authorName" id="authorName" [(ngModel)]="bookRequest.authorName" placeholder="authorName">
+
+                </div>
+                <div class="col-6">
+                    <label for="isbn" class="form-label">
+                        ISBN
+                        
+                        
+                    </label>
+                    <input class="form-control" type="text" name="isbn" id="isbn" [(ngModel)]="bookRequest.isbn" placeholder="isbn">
+
+                </div>
+                <div class="col-12">
+                    <label for="synopsis" class="form-label">
+                        Synopsis
+                        
+                    </label>
+                    <textarea class="form-control" rows="4" name="synopsis" id="synopsis" [(ngModel)]="bookRequest.synopsis" placeholder="synopsis">
+                        </textarea>
+
+                </div>
+                <div class="col-12">
+                    
+                    <input class="form-check-input" type="checkbox"  [(ngModel)]="bookRequest.shareable" name="shareable" id="shareME">
+                    <label for="shareME" class="form-check-label"> share me </label>
+
+                       
+
+                </div>
+                <div class="d-flex justify-content-end align-items-center gap-2 col-12">
+                    <button (click)="saveBook()" type="submit" class="btn btn-outline-primary">
+                        <i class="fas fa-save"></i>&nbsp; Save
+                    </button>
+                    <a routerLink="/books/my-books" class="btn btn-link text-danger">
+                        <i class="fas fa-times"></i> &nbsp;Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+
+</div>

@@ -1,0 +1,14 @@
+<div class="rating " >
+    <ng-container *ngFor="let _ of [].constructor(fullStars)">
+        <mat-icon class="text-warning">star</mat-icon>
+
+    </ng-container>
+    <ng-container *ngIf="halfStar">
+       <mat-icon class="text-warning">star_half</mat-icon>
+    </ng-container>
+    <ng-container *ngFor="let _ of [].constructor(emptyStars)">
+        <mat-icon>star</mat-icon>
+
+    </ng-container>
+
+</div>

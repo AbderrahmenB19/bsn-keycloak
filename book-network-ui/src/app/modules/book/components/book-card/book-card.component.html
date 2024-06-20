@@ -1,0 +1,37 @@
+<div
+  [class.border-success]="book.shareable"
+  [class.border-warning]="book.archived"
+  class="card border-2" style="width: 20rem;">
+  <img height="200px" [src]="bookCover|| '#'" class="card-img-top" alt="...">
+  <div class="card-body overflow-scroll">
+    <h5 class="card-title text-nowrap fs-6 fw-bold mb-1">
+      <mat-icon>book</mat-icon>&nbsp;{{book.title}}
+    </h5>
+    <h5 class="card-subtitle text-secondary fs-6 fw-bold mb-1">
+      <mat-icon>account_circle</mat-icon>&nbsp;{{book.authorName}}
+    </h5>
+    <h6 class="card-subtitle text-secondary fs-6 fw-bold mb-1">
+      <mat-icon>view_week</mat-icon>&nbsp;{{book.isbn}}
+    </h6>
+    <h6 class="card-subtitle text-secondary fs-6 fw-bold">
+      <mat-icon>person</mat-icon>&nbsp;{{book.owner}}
+    </h6>
+    <hr>
+    <p class="card-text">{{book.synopsis}}</p>
+  </div>
+  <div class="card-footer d-flex gap-2 justify-content-between align-items-center">
+    <div class="d-flex gap-2">
+      <app-rating [rating]="book.rate || 0"></app-rating>
+    </div>
+    <div class="d-flex gap-2" *ngIf="!manage">
+      <mat-icon (click)="onShowDetails()" class="text-primary" style="cursor: pointer;">info</mat-icon>
+      <mat-icon (click)="onBorrow()" class="text-primary" style="cursor: pointer;">list_alt</mat-icon>
+      <mat-icon (click)="onAddToWaitingList()" class="text-danger" style="cursor: pointer;">favorite</mat-icon>
+    </div>
+    <div class="d-flex gap-2" *ngIf="manage">
+      <mat-icon (click)="onEdit()" class="text-primary" style="cursor: pointer;">edit</mat-icon>
+      <mat-icon (click)="onShare()" class="text-primary" style="cursor: pointer;">share</mat-icon>
+      <mat-icon (click)="OnArchive()" class="text-danger" style="cursor: pointer;">archive</mat-icon>
+    </div>
+  </div>
+</div>
